@@ -120,7 +120,7 @@ module tb_Sensor_receiver;
         @(posedge clk);
         $display("[%0t] [MONITOR CDC] FF1=%b, FF2=%b", $time, uut.sync_clk_datos_1, uut.sync_clk_datos_2);
 
-        //VUELTA A CONDICIONES NORMALES
+        //CONDICIONES NORMALES
         #5; 
         bit_entrada = 1;
         clk_datos   = 0;
