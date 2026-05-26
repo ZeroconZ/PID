@@ -1,0 +1,112 @@
+# Reading C:/altera/13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do PID_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying c:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied c:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/UCC.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module UCC
+# 
+# Top level modules:
+# 	UCC
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/Sensor_receiver.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Sensor_receiver
+# 
+# Top level modules:
+# 	Sensor_receiver
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/PWM_gen.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module PWM_gen
+# 
+# Top level modules:
+# 	PWM_gen
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/PISO.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module PISO
+# 
+# Top level modules:
+# 	PISO
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/PID.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module PID
+# 
+# Top level modules:
+# 	PID
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/LUTP.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module LUTP
+# 
+# Top level modules:
+# 	LUTP
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/LUTI.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module LUTI
+# 
+# Top level modules:
+# 	LUTI
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD2.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module LUTD2
+# 
+# Top level modules:
+# 	LUTD2
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD1.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module LUTD1
+# 
+# Top level modules:
+# 	LUTD1
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/Delay.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Delay
+# 
+# Top level modules:
+# 	Delay
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/ACC_adder.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ACC_adder
+# 
+# Top level modules:
+# 	ACC_adder
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts {D:/TFM/Proyectos_Quartus/PID/Scripts/ACC.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ACC
+# 
+# Top level modules:
+# 	ACC
+# 
+# vlog -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/simulation/Scripts {D:/TFM/Proyectos_Quartus/PID/simulation/Scripts/Receptor_Datos.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Receptor_Datos
+# 
+# Top level modules:
+# 	Receptor_Datos
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  Receptor_Datos
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps Receptor_Datos 
+# Loading work.Receptor_Datos
+# Loading work.Sensor_receiver
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ========================================
+# Dato enviado por el sensor : a53c
+# Dato recibido por el modulo: a53c
+# ========================================
+# Break in Module Receptor_Datos at D:/TFM/Proyectos_Quartus/PID/simulation/Scripts/Receptor_Datos.v line 95
+# Simulation Breakpoint: Break in Module Receptor_Datos at D:/TFM/Proyectos_Quartus/PID/simulation/Scripts/Receptor_Datos.v line 95
+# MACRO ./PID_run_msim_rtl_verilog.do PAUSED at line 28
+# WARNING: No extended dataflow license exists
+# WARNING: No extended dataflow license exists

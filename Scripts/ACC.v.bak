@@ -1,0 +1,41 @@
+module ACC #(
+	parameter ANCHO = 16
+)(
+	input wire clk,
+	input wire reset,
+	input wire enable,
+	input wire sub,
+	input wire udpate_val,
+
+	input wire signed[ANCHO-1:0] val_1,
+	output reg signed[ANCHO-1:0] resultado,
+);
+
+	reg signed [ANCHO-1:0] val_interno;
+	
+	always @(posedge clk) begin
+		if (reset) begin
+			val_interno <= 0;
+		end
+		
+		else if (enable) begin
+			if (sub) begin
+				val_interno <= (val_interno >>> 1) - val_1;
+			end
+			
+			else begin
+				val_interno <= (val_interno >>> 1) + val_1;
+			end
+		end
+	end
+	
+	alwasy @(posedge clk) begin
+		if (reset) begin 
+			val_interno <= 0;
+		end
+		else if (update_value) begin
+			resultado <= val_interno ;
+		end
+	end
+
+endmodule

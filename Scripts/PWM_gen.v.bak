@@ -1,0 +1,34 @@
+module PWM_gen #(
+    parameter ANCHO = 16,
+    parameter PERIODO = 32768
+)(
+    input wire clk,
+    input wire reset,
+
+    input wire [ANCHO-1:0] Resultado_PID,
+    output reg PWM_out
+);
+
+    reg [ANCHO-1:0] CURRENT_CYCLE;
+
+    always @(posedge clk) begin
+        if ((CURRENT_CYCLE == PERIODO) || (reset)) begin
+
+            PWM_out <= 1'b0;
+            CURRENT_CYCLE <= 0; 
+        end
+        else begin
+
+            if (CURRENT_CYCLE >= RESULTADO_PID) begin
+                PWM_out <= 1'b0;  
+            end
+            else begin
+                PWM_out <= 1'b1;
+            end
+
+            CURRENT_CYCLE <= CURRENT_CYCLE + 1;
+        end     
+    end
+
+endmodule
+

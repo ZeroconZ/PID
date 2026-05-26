@@ -1,0 +1,278 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\TFM\Proyectos_Quartus\PID\simulation\modelsim
+vACC
+IoizgzGJeb4FcQYG4ABoHX0
+V?CEzC[NQb15G>aNWD;:k]1
+Z1 dD:\TFM\Proyectos_Quartus\PID\simulation\modelsim
+w1774649598
+8D:/TFM/Proyectos_Quartus/PID/Scripts/ACC.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/ACC.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/Scripts -O0
+n@a@c@c
+!i10b 1
+!s100 ULj6I[H7OWO3<C4h=nP^^3
+!s85 0
+!s108 1779300776.846000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/ACC.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/ACC.v|
+!s101 -O0
+vACC_adder
+I2ijQLSS]b1V:J`8h8JKSf0
+VTQD^L^QmJF:5ZEfRZ_6IU3
+R1
+w1776549684
+8D:/TFM/Proyectos_Quartus/PID/Scripts/ACC_adder.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/ACC_adder.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@a@c@c_adder
+!i10b 1
+!s100 PB7hDPA1cco6J5CaG=g>10
+!s85 0
+!s108 1779300776.739000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/ACC_adder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/ACC_adder.v|
+!s101 -O0
+vDelay
+IQ^:fT<eL5kl0Im64lZCMH0
+V8LaF=@DD09i1hODQSdb?M0
+R1
+w1776270425
+8D:/TFM/Proyectos_Quartus/PID/Scripts/Delay.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/Delay.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@delay
+!i10b 1
+!s100 [>f9_VefDl=TB^4F[jCa[2
+!s85 0
+!s108 1779300776.622000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/Delay.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/Delay.v|
+!s101 -O0
+vLUTD1
+I1lP:H6X67Jel9;hkSiBAd2
+VMN9Eg_kQ[8[SzMZlm^O=D1
+R1
+w1775669220
+8D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD1.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/LUTD1.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@l@u@t@d1
+!i10b 1
+!s100 az_Whhag<FGQ@T[ZUb62j0
+!s85 0
+!s108 1779300776.471000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD1.v|
+!s101 -O0
+vLUTD2
+II<3_gemAALG]Q`P:U>`o83
+ViNf7ZR8NZgc3oP0miN;;<3
+R1
+w1772471679
+8D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD2.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/LUTD2.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@l@u@t@d2
+!i10b 1
+!s100 YabIbilgllFCN5ZZ_NZl:3
+!s85 0
+!s108 1779300776.363000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/LUTD2.v|
+!s101 -O0
+vLUTI
+I9E86cZAi1aQe`B7BbFazK1
+VH^2PSACOSNZ;;HHJK4QgH3
+R1
+w1775125120
+8D:/TFM/Proyectos_Quartus/PID/Scripts/LUTI.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/LUTI.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@l@u@t@i
+!i10b 1
+!s100 ABQa?]>ilGzk_Pb19Pi0j3
+!s85 0
+!s108 1779300776.246000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/LUTI.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/LUTI.v|
+!s101 -O0
+vLUTP
+I_hI<140S0ZaHc4UH0[FkV1
+V;[iPfa3Ae62l^2S2nziW21
+R1
+w1773140830
+8D:/TFM/Proyectos_Quartus/PID/Scripts/LUTP.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/LUTP.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@l@u@t@p
+!i10b 1
+!s100 OGc`LHVH5K2Ic7TZn`KDc2
+!s85 0
+!s108 1779300776.130000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/LUTP.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/LUTP.v|
+!s101 -O0
+vPID
+IS;:2<Ib06bC2P:^J8=ZZh0
+VK;alChL97?oGBc@;hFk0:0
+R1
+w1779209265
+8D:/TFM/Proyectos_Quartus/PID/Scripts/PID.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/PID.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@p@i@d
+!i10b 1
+!s100 IFh_HDCWJK7AKgLTQKgN71
+!s85 0
+!s108 1779300776.001000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/PID.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/PID.v|
+!s101 -O0
+vPISO
+ICWXCB99GaWQdDlNeX9G671
+VO>Y[PbfSHo^]1k@_N3UKG2
+R1
+w1773078895
+8D:/TFM/Proyectos_Quartus/PID/Scripts/PISO.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/PISO.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@p@i@s@o
+!i10b 1
+!s100 281S7lmk<0iHT3i>0oK;V3
+!s85 0
+!s108 1779300775.907000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/PISO.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/PISO.v|
+!s101 -O0
+vPWM_gen
+IRK:Kmd[[n=k]W6eiW`HQn2
+VLXaSCQ5cDa>jeNMVG8=J>2
+R1
+w1776549313
+8D:/TFM/Proyectos_Quartus/PID/Scripts/PWM_gen.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/PWM_gen.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@p@w@m_gen
+!i10b 1
+!s100 DZn[0IGH^LB3eXz_R6@A11
+!s85 0
+!s108 1779300775.831000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/PWM_gen.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/PWM_gen.v|
+!s101 -O0
+vReceptor_Datos
+!i10b 1
+!s100 6=RTDBhZ68NHcAjJTka2b2
+I5:<iiiMXFkzhN`GYeMI;J2
+VLYL^Bh:73bG=F6[?2VZVM2
+R1
+w1779298301
+8D:/TFM/Proyectos_Quartus/PID/simulation/Scripts/Receptor_Datos.v
+FD:/TFM/Proyectos_Quartus/PID/simulation/Scripts/Receptor_Datos.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1779300776.957000
+!s107 D:/TFM/Proyectos_Quartus/PID/simulation/Scripts/Receptor_Datos.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/simulation/Scripts|D:/TFM/Proyectos_Quartus/PID/simulation/Scripts/Receptor_Datos.v|
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+D:/TFM/Proyectos_Quartus/PID/simulation/Scripts -O0
+n@receptor_@datos
+vSensor_receiver
+I161FXBAFXY>0G61MJ4Z<k3
+Vd<G1c6d`6Y`S8WY[`^T680
+R1
+w1777044584
+8D:/TFM/Proyectos_Quartus/PID/Scripts/Sensor_receiver.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/Sensor_receiver.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@sensor_receiver
+!i10b 1
+!s100 `EScT9^PGo;63K2@_K8?c3
+!s85 0
+!s108 1779300775.747000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/Sensor_receiver.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/Sensor_receiver.v|
+!s101 -O0
+vUCC
+I<AFiQYXXIAK=;N]?9AcRQ1
+V^Ml@>XebUPn6fZ026:z]32
+R1
+w1773780360
+8D:/TFM/Proyectos_Quartus/PID/Scripts/UCC.v
+FD:/TFM/Proyectos_Quartus/PID/Scripts/UCC.v
+L0 1
+R2
+r1
+31
+R3
+n@u@c@c
+R4
+!i10b 1
+!s100 NP92>PK`MkKY<h9Ub5S^d0
+!s85 0
+!s108 1779300775.616000
+!s107 D:/TFM/Proyectos_Quartus/PID/Scripts/UCC.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/TFM/Proyectos_Quartus/PID/Scripts|D:/TFM/Proyectos_Quartus/PID/Scripts/UCC.v|
+!s101 -O0
