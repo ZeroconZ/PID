@@ -4,7 +4,6 @@ module UCC (
     input wire start_tick,   
 
     output reg load_PISO,
-    output reg new_val_delay,
     output reg shift_SO,   
     output reg clear_acc,    
     output reg enable_acc,   

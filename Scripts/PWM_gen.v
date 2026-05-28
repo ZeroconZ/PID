@@ -4,7 +4,7 @@ module PWM_gen #(
     input wire clk,
     input wire reset,
     input wire start_tick,
-    input wire full_speed,  // ← Add this
+    input wire full_speed,  
     input wire signed [ANCHO-1:0] RESULTADO_PID, 
     output reg PWM_out 
 );
