@@ -1,6 +1,6 @@
 module LUTP #(
-	parameter signed [15:0] mK = 16'b1001,
-	parameter signed [15:0] Kb = 16'b0001,
+	parameter signed [15:0] mK = 16'b1001000000000000,
+	parameter signed [15:0] Kb = 16'b0001000000000000,
 	parameter signed [15:0] KbmK = 16'b0
 )(
 	input [1:0] lut_in,

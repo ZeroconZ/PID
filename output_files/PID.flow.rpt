@@ -1,5 +1,5 @@
 Flow report for PID
-Thu May 28 18:35:31 2026
+Thu May 28 19:58:43 2026
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,15 +40,15 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Thu May 28 18:35:31 2026      ;
+; Flow Status                        ; Successful - Thu May 28 19:58:43 2026      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; PID                                        ;
 ; Top-level Entity Name              ; PID                                        ;
 ; Family                             ; Cyclone III                                ;
 ; Device                             ; EP3C25F324I7                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 520                                        ;
-;     Total combinational functions  ; 504                                        ;
+; Total logic elements               ; 514                                        ;
+;     Total combinational functions  ; 500                                        ;
 ;     Dedicated logic registers      ; 341                                        ;
 ; Total registers                    ; 341                                        ;
 ; Total pins                         ; 22                                         ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/28/2026 18:35:29 ;
+; Start date & time ; 05/28/2026 19:58:42 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; PID                 ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+--------------------------+
 ; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id               ;
 +--------------------------------------+---------------------------------------+---------------+-------------+--------------------------+
-; COMPILER_SIGNATURE_ID                ; 4620358426293.177998612901336         ; --            ; --          ; --                       ;
+; COMPILER_SIGNATURE_ID                ; 7142766571854.177999112203208         ; --            ; --          ; --                       ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba Receptor de Datos ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_PID               ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; Prueba_PID                            ; --            ; --          ; eda_simulation           ;
@@ -106,8 +106,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:02     ; 1.0                     ; 4651 MB             ; 00:00:02                           ;
-; Total                ; 00:00:02     ; --                      ; --                  ; 00:00:02                           ;
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 4675 MB             ; 00:00:01                           ;
+; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -116,7 +116,7 @@ applicable agreement for further details.
 +----------------------+------------------+-----------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-H99B3A2  ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis ; DESKTOP-89JCUED  ; Windows 7 ; 6.2        ; x86_64         ;
 +----------------------+------------------+-----------+------------+----------------+
 
 

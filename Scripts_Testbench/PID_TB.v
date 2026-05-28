@@ -68,7 +68,9 @@ module system_TB;
         clk_datos = 0;
         ini_fin = 0;
         bit_entrada = 0;
-        Uc = 16'd15000;     
+        Uc = 16'd1000;     
+
+        Feedback = 16'd0;
         //LIMPIEZA DEL CONTROLADOR
         #50;
         reset = 0;
@@ -77,7 +79,7 @@ module system_TB;
         $display("[%0t] -----------------------------------------------------------------", $time);
 
         //PRUEBA BÁSICA
-        Feedback = 16'h25A3;
+        Feedback = 16'd950;
         $display("[%0t] Envio de un valor: %d", $time, Feedback);
         send_spi_data(Feedback);
 
@@ -94,7 +96,9 @@ module system_TB;
         @(posedge uut.resultado_ready);
         #1;
         $display("[%0t] [MONITOR CDC] RESULTADO=%d", $time, uut.RESULTADO_PID);
-
+        
+        #200;
+        $stop;
     end
 
 endmodule
