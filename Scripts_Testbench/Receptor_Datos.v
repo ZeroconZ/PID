@@ -25,9 +25,11 @@ module tb_Sensor_receiver;
     ) uut (
         .clk(clk),
         .reset(reset),
+
         .clk_datos(clk_datos),
         .ini_fin(ini_fin),
         .bit_entrada(bit_entrada),
+        
         .Y(Y),
         .start_tick(start_tick)
     );

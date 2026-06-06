@@ -36,6 +36,7 @@ module PID #(
 
 	wire [ANCHO-1:0] Delay_I_Out;
 	wire [ANCHO-1:0] I;
+	wire [ANCHO-1:0] D;
 
 	//CONTROL ACC
 	wire clear_acc;
@@ -59,7 +60,7 @@ module PID #(
 
 	wire SO_Delay_Uc;
 	wire SO_Delay_Y;
-	wire SO_ACC_D2;
+	wire SO_D;
 
 	wire [ANCHO-1:0] Delay_Uc_out;
 	wire [ANCHO-1:0] Delay_Y_out;
@@ -92,7 +93,7 @@ module PID #(
 
 	Sensor_receiver #(
 		.ANCHO(ANCHO)
-	) Adecuacion_feedback (
+	) Recepcion_feedback (
 		.clk(clk), 
 		.reset(reset),
 
@@ -260,15 +261,15 @@ module PID #(
 
 	PISO #(
 		.ANCHO(ANCHO)
-	) PISO_D2 (
+	) PISO_D1 (
 		.clk(clk),
 		.reset(reset),
 		
 		.load(load_PISO),
 		.shift_in(shift_SO),
 
-		.parallel_in(ACC_D2_res), //AÑADIR ENTRADA
-		.serial_out(SO_ACC_D2) //AÑADIR SALIDA
+		.parallel_in(D), //AÑADIR ENTRADA
+		.serial_out(SO_D) //AÑADIR SALIDA
  	);	
 
 	LUTD1 #(
@@ -289,6 +290,8 @@ module PID #(
 		.val(D1_out),
 		.resultado(ACC_D1_res)
 	);
+
+	assign D = ACC_D2_res + ACC_D1_res;
 
 	ACC_adder #(
     .ANCHO(ANCHO)

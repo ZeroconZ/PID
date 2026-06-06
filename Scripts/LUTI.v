@@ -1,5 +1,4 @@
 module LUTI #(
-	
 	parameter signed [15:0] mKT_Ti = 16'b1000000001010010,
 	parameter signed [15:0] KT_Ti =  16'b0000000001010010
 )(
