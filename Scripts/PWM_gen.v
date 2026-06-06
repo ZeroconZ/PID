@@ -3,7 +3,7 @@ module PWM_gen #(
 )(
     input wire clk,
     input wire reset,
-    input wire start_tick,
+    input wire start_pwm,
     input wire full_speed,  
     input wire signed [ANCHO-1:0] RESULTADO_PID, 
     output reg PWM_out 
@@ -12,14 +12,18 @@ module PWM_gen #(
     wire [14:0] duty_cycle;
     assign duty_cycle = (RESULTADO_PID[15] == 1'b1) ? 15'd0 : RESULTADO_PID[14:0];
 
-    reg start_tick_prev;
+    reg start_pwm_prev;
     wire start_edge;
     
     always @(posedge clk) begin
-        start_tick_prev <= start_tick;
+        if (reset) begin
+            start_pwm_prev <= 1'b0;
+        end else begin
+            start_pwm_prev <= start_pwm;
+        end
     end
     
-    assign start_edge = start_tick & ~start_tick_prev;
+    assign start_edge = start_pwm & ~start_pwm_prev;
 
 
     reg [6:0] prescaler;

@@ -314,7 +314,7 @@ module PID #(
 	) PWM_gen (
 		.clk(clk),
 		.reset(reset),
-		.start_tick(resultado_ready),  
+		.start_pwm(resultado_ready),  
 		.full_speed(1'b1),
 		.RESULTADO_PID(RESULTADO_PID),
 		.PWM_out(PWM_pulse)
