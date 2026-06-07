@@ -1,22 +1,22 @@
 module PID #(
-	parameter ANCHO = 16,
-	parameter PERIODO = 32768,
+	parameter ANCHO = 12,
+	parameter PERIODO = 2048,
 
 	//PARAMETROS P
-	parameter signed [ANCHO-1:0] mK = 16'b1001000000000000,
-	parameter signed [ANCHO-1:0] Kb = 16'b0001000000000000,
+	parameter signed [ANCHO-1:0] mK = 16'b100100000000,
+	parameter signed [ANCHO-1:0] Kb = 16'b000100000000,
 	parameter signed [ANCHO-1:0] KbmK = 16'b0,
 
 	//PARAMETROS I
-	parameter signed [ANCHO-1:0] mKT_Ti = 16'b1000000001010010,
-	parameter signed [ANCHO-1:0] KT_Ti =  16'b0000000001010010,
+	parameter signed [ANCHO-1:0] mKT_Ti = 16'b100001010010,
+	parameter signed [ANCHO-1:0] KT_Ti =  16'b000001010010,
 
 	//PARAMETROS D2
-	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'b0011010101010101,
-	parameter signed [ANCHO-1:0] mKTdN_TdmsNT =  16'b1011010101010101,
+	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'b010101010101,
+	parameter signed [ANCHO-1:0] mKTdN_TdmsNT =  16'b110101010101,
 
 	//PARAMETROS D1
-	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'b0000010101010101
+	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'b010101010101
 )(
 	input wire [ANCHO-1:0] Uc, //Señal set point
 
