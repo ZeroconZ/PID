@@ -2,12 +2,11 @@
 
 module system_TB;
     parameter ANCHO = 16;
+    parameter Uc = 0;
 
     // ENTRADAS
     reg clk;
     reg reset;
-
-    reg signed [ANCHO-1:0] Uc;
 
     reg clk_datos;
     reg ini_fin;
@@ -19,11 +18,11 @@ module system_TB;
     reg signed [ANCHO-1:0] Feedback;
 
     // INSTANCIACIÓN DEL DUT
-    PID uut(
+    PID #(
+        .Uc(Uc)
+    )uut(
         .clk(clk),
         .reset(reset),
-
-        .Uc(Uc),
 
         .clk_datos(clk_datos),
         .ini_fin(ini_fin),
@@ -68,7 +67,6 @@ module system_TB;
         clk_datos = 0;
         ini_fin = 0;
         bit_entrada = 0;
-        Uc = 16'd1000;     
 
         Feedback = 16'd0;
         //LIMPIEZA DEL CONTROLADOR
@@ -79,7 +77,7 @@ module system_TB;
         $display("[%0t] -----------------------------------------------------------------", $time);
 
         //PRUEBA BÁSICA
-        Feedback = 16'd950;
+        Feedback = 16'd0;
         $display("[%0t] Envio de un valor: %d", $time, Feedback);
         send_spi_data(Feedback);
 
@@ -95,7 +93,7 @@ module system_TB;
 
         @(posedge uut.resultado_ready);
         #1;
-        $display("[%0t] [MONITOR CDC] RESULTADO=%d", $time, uut.RESULTADO_PID);
+        $display("[%0t] [MONITOR CDC] ACCION P=%d", $time, uut.ACC_P_res);
         
         #200;
         $stop;

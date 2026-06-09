@@ -1,10 +1,10 @@
 module PID #(
 	parameter ANCHO = 16,
 	parameter PERIODO = 32768,
-
+	parameter Uc = 16384,
 	//PARAMETROS P
-	parameter signed [ANCHO-1:0] mK = 16'b1001000000000000,
-	parameter signed [ANCHO-1:0] Kb = 16'b0001000000000000,
+	parameter signed [ANCHO-1:0] mK = -16'd1,
+	parameter signed [ANCHO-1:0] Kb = 16'd1,
 	parameter signed [ANCHO-1:0] KbmK = 16'b0,
 
 	//PARAMETROS I
@@ -18,7 +18,6 @@ module PID #(
 	//PARAMETROS D1
 	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'b0000010101010101
 )(
-	input wire [ANCHO-1:0] Uc, //Señal set point
 
 	input wire clk, 
 	input wire reset,
@@ -29,6 +28,8 @@ module PID #(
 
 	output wire PWM_pulse
 );
+
+	
 	//Cable con la entrada de datos
 	wire [ANCHO-1:0] Y;
 
@@ -197,7 +198,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_P (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -218,7 +219,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_I (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -251,7 +252,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_D2 (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -283,7 +284,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_D1 (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -297,7 +298,7 @@ module PID #(
     .ANCHO(ANCHO)
 	) ACC_adder (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.update_out(update_out),     
 		
 		.ACC_P_res(ACC_P_res),
