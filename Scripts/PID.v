@@ -76,6 +76,7 @@ module PID #(
 	wire [ANCHO-1:0] D2_out;
 	wire [ANCHO-1:0] D1_out;
 
+	wire [ANCHO-1:0] Delay_D_out;
 	
 	//MODULO DE CONTROL CENTRAL
 	UCC UCCi (
@@ -233,7 +234,7 @@ module PID #(
 		.clk(clk),
 		.reset(reset),
 		.update(update_out),
-		.in_val(ACC_I_res),
+		.in_val(I),
 		.out_val(Delay_I_Out)
 	);
 	
@@ -260,6 +261,16 @@ module PID #(
 		.resultado(ACC_D2_res)
 	);
 
+	Delay #(
+		.ANCHO(ANCHO)
+	) Delay_D1 (
+		.clk(clk),
+		.reset(reset),
+		.update(update_out),
+		.in_val(D),
+		.out_val(Delay_D_out)
+	);
+
 	PISO #(
 		.ANCHO(ANCHO)
 	) PISO_D1 (
@@ -269,14 +280,14 @@ module PID #(
 		.load(load_PISO),
 		.shift_in(shift_SO),
 
-		.parallel_in(D), //AÑADIR ENTRADA
+		.parallel_in(Delay_D_out), //AÑADIR ENTRADA
 		.serial_out(SO_D) //AÑADIR SALIDA
  	);	
 
 	LUTD1 #(
 		.Td_TdmsNT(Td_TdmsNT)
 	) D1_value (
-		.lut_in(SO_ACC_D2),
+		.lut_in(SO_D),
 		.lut_out(D1_out)
 	);
 
