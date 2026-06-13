@@ -2,8 +2,7 @@
 
 module system_TB;
     parameter ANCHO = 16;
-    parameter Uc = 0;
-
+    
     // ENTRADAS
     reg clk;
     reg reset;
@@ -11,6 +10,8 @@ module system_TB;
     reg clk_datos;
     reg ini_fin;
     reg bit_entrada;
+    
+    reg [ANCHO-1:0] Uc; 
 
     wire PWM_pulse;
 
@@ -19,19 +20,18 @@ module system_TB;
 
     // INSTANCIACIÓN DEL DUT
     PID #(
-        .Uc(Uc)
-    )uut(
+        .ANCHO(ANCHO) // Aquí sí pasamos parámetros
+    ) uut (
+        .Uc(Uc),      
         .clk(clk),
         .reset(reset),
-
         .clk_datos(clk_datos),
         .ini_fin(ini_fin),
         .bit_entrada(bit_entrada),
-
         .PWM_pulse(PWM_pulse)
     );
 
-    //RELOJ FPGA (50 MHZ)
+    // RELOJ FPGA (50 MHZ)
     always #10 clk = ~clk;
 
     task send_spi_data;
@@ -42,7 +42,7 @@ module system_TB;
             ini_fin = 1;
             #100;
 
-            // ENVIO DEL ESP32
+            // ENVIO DEL ESP32 (MSB First)
             for (i = 15; i >= 0; i = i - 1) begin
                 bit_entrada = data_to_send[i];
                 #100;          
@@ -55,47 +55,53 @@ module system_TB;
             // FIN TRANSMISIÓN
             #100;
             ini_fin = 0;
-            #20;
-
+            #100; // Dejar un margen antes de la siguiente trama
         end
     endtask
 
-    //SECUENCIA DE ESTÍMULOS
+    // SECUENCIA DE ESTÍMULOS
     initial begin 
+        // Inicialización
         clk = 0;
         reset = 1;
         clk_datos = 0;
         ini_fin = 0;
         bit_entrada = 0;
+        Uc = 16'b0100000000000000; // Setpoint en 4.0
 
-        Feedback = 16'd0;
-        //LIMPIEZA DEL CONTROLADOR
-        #50;
+        // LIMPIEZA DEL CONTROLADOR
+        #100;
         reset = 0;
-        #50;
+        #100;
 
         $display("[%0t] -----------------------------------------------------------------", $time);
 
-        //PRUEBA BÁSICA
+        // --- PRUEBA 1: Muestra inicial (Evaluando P) ---
         Feedback = 16'd0;
         $display("[%0t] Envio de un valor: %d", $time, Feedback);
         send_spi_data(Feedback);
 
-        @(posedge uut.start_tick);
-        #1;
+        @(posedge uut.start_tick); // Esperar a que el receptor serial termine
+        if(Feedback == uut.Y) $display("[%0t] [MONITOR] Rx OK: Y = %d", $time, uut.Y);
+        else $display("[%0t] [MONITOR] Hubo un problema papu en Rx", $time);
 
-        if(Feedback == uut.Y) begin
-            $display("[%0t] [MONITOR CDC] La señal se proceso bien", $time);
-        end
-        else begin
-            $display("[%0t] [MONITOR CDC] Hubo un problema papu", $time);
-        end
+        @(posedge uut.resultado_ready); // Esperar cálculo DA
+        $display("[%0t] [MONITOR] Calculo completado -> ACC_P=%d, I=%d, PID=%d", $time, uut.ACC_P_res, uut.I, uut.RESULTADO_PID);
 
-        @(posedge uut.resultado_ready);
-        #1;
-        $display("[%0t] [MONITOR CDC] ACCION P=%d", $time, uut.ACC_P_res);
+        // --- PRUEBA 2: Nueva muestra (Evaluando I y D) ---
+        #5000; // Esperar un poco
+        Feedback = 16'b0001000000000000; // Simular que la temperatura subió (Y = 1.0)
+        $display("\n[%0t] Envio de nueva muestra: %d", $time, Feedback);
+        send_spi_data(Feedback);
         
-        #200;
+        @(posedge uut.resultado_ready);
+        $display("[%0t] [MONITOR] Calculo completado -> ACC_P=%d, I=%d, PID=%d", $time, uut.ACC_P_res, uut.I, uut.RESULTADO_PID);
+
+        // Esperar lo suficiente para ver una iteración completa del módulo PWM
+        // El periodo base suele requerir miles de ciclos a 50MHz
+        #1000000; 
+        
+        $display("[%0t] Fin de la simulacion.", $time);
         $stop;
     end
 
