@@ -153,14 +153,14 @@ module P_TB;
         clk_datos = 0;
         ini_fin = 0;
         bit_entrada = 0;
-        Uc = 16'd16384;
+        Uc = 16'd21845;
 
         #100;
         reset = 0;
         #100;
 
         $display("-----------------------------------------------------------------");
-        Feedback = 16'd0;
+        Feedback = -16'd21846;
         $display("[%0t] Envio de un valor: %d", $time, Feedback);
         
         test_ACC_P(Feedback); 

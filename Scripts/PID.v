@@ -3,13 +3,13 @@ module PID #(
 	parameter PERIODO = 32768,
 	parameter Uc = 16384,
 	//PARAMETROS P
-	parameter signed [ANCHO-1:0] mK = -16'd1,
-	parameter signed [ANCHO-1:0] Kb = 16'd1,
+	parameter signed [ANCHO-1:0] mK = -16'd4096,
+	parameter signed [ANCHO-1:0] Kb = 16'd4096,
 	parameter signed [ANCHO-1:0] KbmK = 16'b0,
 
 	//PARAMETROS I
-	parameter signed [ANCHO-1:0] mKT_Ti = 16'b1000000001010010,
-	parameter signed [ANCHO-1:0] KT_Ti =  16'b0000000001010010,
+	parameter signed [ANCHO-1:0] mKT_Ti = 16'b1111110011001101,
+	parameter signed [ANCHO-1:0] KT_Ti =  16'b0000001100110011,
 
 	//PARAMETROS D2
 	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'b0011010101010101,

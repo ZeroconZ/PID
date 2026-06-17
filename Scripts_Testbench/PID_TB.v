@@ -11,18 +11,19 @@ module system_TB;
     reg ini_fin;
     reg bit_entrada;
     
-    reg [ANCHO-1:0] Uc; 
+    parameter signed [ANCHO-1:0] Uc = 16'd16384; 
 
     wire PWM_pulse;
 
     // VARIABLES DE CONTROL LOCALES DEL TESTBENCH
     reg signed [ANCHO-1:0] Feedback;
+    integer j; 
 
     // INSTANCIACIÓN DEL DUT
     PID #(
-        .ANCHO(ANCHO) // Aquí sí pasamos parámetros
-    ) uut (
-        .Uc(Uc),      
+        .ANCHO(ANCHO),
+        .Uc(Uc)
+    ) uut (    
         .clk(clk),
         .reset(reset),
         .clk_datos(clk_datos),
@@ -55,7 +56,7 @@ module system_TB;
             // FIN TRANSMISIÓN
             #100;
             ini_fin = 0;
-            #100; // Dejar un margen antes de la siguiente trama
+            #100; 
         end
     endtask
 
@@ -67,38 +68,47 @@ module system_TB;
         clk_datos = 0;
         ini_fin = 0;
         bit_entrada = 0;
-        Uc = 16'b0100000000000000; // Setpoint en 4.0
 
         // LIMPIEZA DEL CONTROLADOR
         #100;
         reset = 0;
         #100;
 
-        $display("[%0t] -----------------------------------------------------------------", $time);
+        $display("=================================================================");
+        $display("PRUEBA");
+        $display("=================================================================\n");
 
-        // --- PRUEBA 1: Muestra inicial (Evaluando P) ---
-        Feedback = 16'd0;
-        $display("[%0t] Envio de un valor: %d", $time, Feedback);
-        send_spi_data(Feedback);
+        Feedback = 16'd384; 
 
-        @(posedge uut.start_tick); // Esperar a que el receptor serial termine
-        if(Feedback == uut.Y) $display("[%0t] [MONITOR] Rx OK: Y = %d", $time, uut.Y);
-        else $display("[%0t] [MONITOR] Hubo un problema papu en Rx", $time);
+        for (j = 1; j <= 6; j = j + 1) begin
+            $display("--- ENVIANDO MUESTRA %0d ---", j);
+            
+            fork
+                begin
+                    send_spi_data(Feedback);
+                end
+                begin
+                    @(posedge uut.start_tick); 
+                end
+            join
 
-        @(posedge uut.resultado_ready); // Esperar cálculo DA
-        $display("[%0t] [MONITOR] Calculo completado -> ACC_P=%d, I=%d, PID=%d", $time, uut.ACC_P_res, uut.I, uut.RESULTADO_PID);
+            if(Feedback == uut.Y) $display("[%0t] [MONITOR] Rx OK: Y = %d", $time, uut.Y);
+            else $display("[%0t] [MONITOR] Hubo un problema papu en el envio", $time);
+ 
+            @(posedge uut.resultado_ready);
+            @(posedge clk); 
 
-        // --- PRUEBA 2: Nueva muestra (Evaluando I y D) ---
-        #5000; // Esperar un poco
-        Feedback = 16'b0001000000000000; // Simular que la temperatura subió (Y = 1.0)
-        $display("\n[%0t] Envio de nueva muestra: %d", $time, Feedback);
-        send_spi_data(Feedback);
-        
-        @(posedge uut.resultado_ready);
-        $display("[%0t] [MONITOR] Calculo completado -> ACC_P=%d, I=%d, PID=%d", $time, uut.ACC_P_res, uut.I, uut.RESULTADO_PID);
+            // MONITOR DE VARIABLES
+            $display("Tiempo %0t:", $time);
+            $display("   -> Accion P (Instantanea) = %d", uut.ACC_P_res);
+            $display("   -> Incremento I del ciclo = %d", uut.ACC_I_res);
+            $display("   -> INTEGRAL TOTAL (I)     = %d", uut.I);
+            $display("   -> INTEGRAL RETARDADA (I k-1)     = %d", uut.Delay_I_Out);
+            $display("   -> RESULTADO PID          = %d\n", uut.RESULTADO_PID);
 
-        // Esperar lo suficiente para ver una iteración completa del módulo PWM
-        // El periodo base suele requerir miles de ciclos a 50MHz
+            #5000; 
+        end
+
         #1000000; 
         
         $display("[%0t] Fin de la simulacion.", $time);

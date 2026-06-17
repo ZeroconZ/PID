@@ -137,7 +137,7 @@ module ACC_TB;
         else begin
             $display("[%0t] Un pequeño percance: %d", $time, resultado);
         end
-
+        #400
         //DOS CICLOS CON RESTA
         $display("[%0t] -----------------------------------------------------------------", $time);
          
