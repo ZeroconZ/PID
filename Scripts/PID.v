@@ -77,6 +77,8 @@ module PID #(
 	wire [ANCHO-1:0] D1_out;
 
 	wire [ANCHO-1:0] Delay_D_out;
+
+	wire update_delays;
 	
 	//MODULO DE CONTROL CENTRAL
 	UCC UCCi (
@@ -92,6 +94,14 @@ module PID #(
 		.resta(resta),
 		.update_out(update_out)
 	);
+
+	always @(posedge clk) begin
+        if (reset) begin
+            update_delays <= 1'b0;
+        end else begin
+            update_delays <= update_out;
+        end
+    end
 
 	Sensor_receiver #(
 		.ANCHO(ANCHO)
@@ -141,7 +151,7 @@ module PID #(
 	) Delay_Uc (
 		.clk(clk),
 		.reset(reset),
-		.update(update_out),
+		.update(update_delays),
 		.in_val(Uc),
 		.out_val(Delay_Uc_out)
 	);
@@ -166,7 +176,7 @@ module PID #(
 	) Delay_Y (
 		.clk(clk),
 		.reset(reset),
-		.update(update_out),
+		.update(update_delays),
 		.in_val(Y),
 		.out_val(Delay_Y_out)
 	);
@@ -233,7 +243,7 @@ module PID #(
 	) Delay_I (
 		.clk(clk),
 		.reset(reset),
-		.update(update_out),
+		.update(update_delays),
 		.in_val(I),
 		.out_val(Delay_I_Out)
 	);
@@ -266,7 +276,7 @@ module PID #(
 	) Delay_D1 (
 		.clk(clk),
 		.reset(reset),
-		.update(update_out),
+		.update(update_delays),
 		.in_val(D),
 		.out_val(Delay_D_out)
 	);
@@ -305,20 +315,19 @@ module PID #(
 
 	assign D = ACC_D2_res + ACC_D1_res;
 
-	ACC_adder #(
-    .ANCHO(ANCHO)
-	) ACC_adder (
+	Final_adder #(
+    	.ANCHO(ANCHO)
+	) Final_adder (
 		.clk(clk),
-		.reset(clear_acc),
+		.reset(reset),
 		.update_out(update_out),     
 		
-		.ACC_P_res(ACC_P_res),
-		.ACC_I_res(I),
-		.ACC_D2_res(ACC_D2_res),
-		.ACC_D1_res(ACC_D1_res),
+		.P_in(ACC_P_res),
+		.I_in(I),
+		.D_in(D),
 		
-		.RESULTADO_PID(RESULTADO_PID),
-		.RESULTADO_ready(resultado_ready)
+		.U_out(RESULTADO_PID),
+		.out_ready(resultado_ready)
 	);
 
 	PWM_gen #(
@@ -326,8 +335,10 @@ module PID #(
 	) PWM_gen (
 		.clk(clk),
 		.reset(reset),
+
 		.start_pwm(resultado_ready),  
 		.full_speed(1'b1),
+
 		.RESULTADO_PID(RESULTADO_PID),
 		.PWM_out(PWM_pulse)
 	);
