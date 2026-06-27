@@ -1,5 +1,5 @@
 Flow report for PID
-Wed May 20 20:12:45 2026
+Sat Jun 27 19:49:46 2026
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Wed May 20 20:12:45 2026      ;
+; Flow Status                        ; Successful - Sat Jun 27 19:49:46 2026      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; PID                                        ;
 ; Top-level Entity Name              ; PID                                        ;
 ; Family                             ; Cyclone III                                ;
 ; Device                             ; EP3C25F324I7                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 520                                        ;
-;     Total combinational functions  ; 504                                        ;
-;     Dedicated logic registers      ; 341                                        ;
-; Total registers                    ; 341                                        ;
-; Total pins                         ; 22                                         ;
+; Total logic elements               ; 580                                        ;
+;     Total combinational functions  ; 552                                        ;
+;     Dedicated logic registers      ; 389                                        ;
+; Total registers                    ; 389                                        ;
+; Total pins                         ; 6                                          ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -64,37 +64,65 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/20/2026 20:12:45 ;
+; Start date & time ; 06/27/2026 19:49:45 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; PID                 ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                            ;
-+--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
-+--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 7142766571854.177930076415052         ; --            ; --          ; --             ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Receptor_Datos ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; Receptor_Datos                        ; --            ; --          ; eda_simulation ;
-; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)             ; <None>        ; --          ; --             ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                       ; --            ; --          ; eda_simulation ;
-; EDA_TEST_BENCH_FILE                  ; simulation/Scripts/Receptor_Datos.v   ; --            ; --          ; Receptor_Datos ;
-; EDA_TEST_BENCH_MODULE_NAME           ; Receptor_Datos                        ; --            ; --          ; Receptor_Datos ;
-; EDA_TEST_BENCH_NAME                  ; Receptor_Datos                        ; --            ; --          ; eda_simulation ;
-; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --          ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP               ; 100                                   ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP               ; -40                                   ; --            ; --          ; --             ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                  ; --            ; --          ; --             ;
-; PARTITION_COLOR                      ; 16764057                              ; --            ; --          ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE               ; SOURCE                                ; --            ; --          ; Top            ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                   ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                          ; --            ; --          ; --             ;
-+--------------------------------------+---------------------------------------+---------------+-------------+----------------+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                      ;
++--------------------------------------+---------------------------------------+---------------+-------------+--------------------------+
+; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id               ;
++--------------------------------------+---------------------------------------+---------------+-------------+--------------------------+
+; COMPILER_SIGNATURE_ID                ; 7142766571854.178258258511208         ; --            ; --          ; --                       ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba Receptor de Datos ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_PID               ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba UCC               ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_ACC               ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_PWM               ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_Calculo_P         ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_Calculo_I         ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_Calculo_D         ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; Prueba_Calculo_D                      ; --            ; --          ; eda_simulation           ;
+; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation           ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)             ; <None>        ; --          ; --                       ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                       ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/Receptor_Datos.v    ; --            ; --          ; Prueba Receptor de Datos ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/PID_TB.v            ; --            ; --          ; Prueba_PID               ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/UCC_TB.v            ; --            ; --          ; Prueba UCC               ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/ACC_TB.v            ; --            ; --          ; Prueba_ACC               ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/PWM_TB.v            ; --            ; --          ; Prueba_PWM               ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/P_TB.v              ; --            ; --          ; Prueba_Calculo_P         ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/I_TB.v              ; --            ; --          ; Prueba_Calculo_I         ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/D_TB.v              ; --            ; --          ; Prueba_Calculo_D         ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_Sensor_receiver                    ; --            ; --          ; Prueba Receptor de Datos ;
+; EDA_TEST_BENCH_MODULE_NAME           ; system_TB                             ; --            ; --          ; Prueba_PID               ;
+; EDA_TEST_BENCH_MODULE_NAME           ; UCC_TB                                ; --            ; --          ; Prueba UCC               ;
+; EDA_TEST_BENCH_MODULE_NAME           ; ACC_TB                                ; --            ; --          ; Prueba_ACC               ;
+; EDA_TEST_BENCH_MODULE_NAME           ; PWM_TB                                ; --            ; --          ; Prueba_PWM               ;
+; EDA_TEST_BENCH_MODULE_NAME           ; P_TB                                  ; --            ; --          ; Prueba_Calculo_P         ;
+; EDA_TEST_BENCH_MODULE_NAME           ; I_TB                                  ; --            ; --          ; Prueba_Calculo_I         ;
+; EDA_TEST_BENCH_MODULE_NAME           ; D_TB                                  ; --            ; --          ; Prueba_Calculo_D         ;
+; EDA_TEST_BENCH_NAME                  ; Prueba Receptor de Datos              ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba_PID                            ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba UCC                            ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba_ACC                            ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba_PWM                            ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba_Calculo_P                      ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba_Calculo_I                      ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba_Calculo_D                      ; --            ; --          ; eda_simulation           ;
+; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --          ; eda_simulation           ;
+; MAX_CORE_JUNCTION_TEMP               ; 100                                   ; --            ; --          ; --                       ;
+; MIN_CORE_JUNCTION_TEMP               ; -40                                   ; --            ; --          ; --                       ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                  ; --            ; --          ; --                       ;
+; PARTITION_COLOR                      ; 16764057                              ; --            ; --          ; Top                      ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top                      ;
+; PARTITION_NETLIST_TYPE               ; SOURCE                                ; --            ; --          ; Top                      ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                   ; --            ; --          ; --                       ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --                       ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                          ; --            ; --          ; --                       ;
++--------------------------------------+---------------------------------------+---------------+-------------+--------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -102,7 +130,7 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 4676 MB             ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 4683 MB             ; 00:00:01                           ;
 ; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 

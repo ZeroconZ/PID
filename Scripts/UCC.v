@@ -1,10 +1,12 @@
-module UCC (
+module UCC #(
+    parameter ANCHO = 16
+)
+(
     input wire clk,          
     input wire reset,        
     input wire start_tick,   
 
     output reg load_PISO,
-    output reg new_val_delay,
     output reg shift_SO,   
     output reg clear_acc,    
     output reg enable_acc,   
@@ -38,7 +40,7 @@ module UCC (
                 end
                 
                 CALC: begin
-                    if (bit_count == 15) begin
+                    if (bit_count == ANCHO-1) begin
                         estado_actual <= UPDATE; 
                     end else begin
                         bit_count <= bit_count + 1'b1; 
@@ -75,7 +77,7 @@ module UCC (
                 shift_SO = 1; 
                 enable_acc = 1; 
                 
-                if (bit_count == 15) begin
+                if (bit_count == ANCHO-1) begin
                     resta = 1; 
                 end
             end

@@ -1,5 +1,4 @@
 module LUTD2 #(
-	
 	parameter signed [15:0] KTdN_TdmsNT = 16'b0011010101010101,
 	parameter signed [15:0] mKTdN_TdmsNT = 16'b1011010101010101
 )(

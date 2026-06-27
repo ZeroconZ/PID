@@ -1,5 +1,4 @@
 module LUTD1 #(
-	
 	parameter signed [15:0] Td_TdmsNT = 16'b0000010101010101
 )(
 	input lut_in,

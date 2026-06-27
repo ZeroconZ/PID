@@ -12,9 +12,8 @@ module Delay #(
 
     always @(posedge clk) begin
         if (reset) begin
-            out_val <= 0; 
-        end 
-        else if (update) begin
+            out_val <= {ANCHO{1'b0}}; 
+        end else if (update) begin
             out_val <= in_val;
         end
     end

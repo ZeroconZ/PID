@@ -1,20 +1,23 @@
 module PID #(
 	parameter ANCHO = 16,
 	parameter PERIODO = 32768,
-
-	parameter signed [ANCHO-1:0] mK = 16'b0000000000000001,
-	parameter signed [ANCHO-1:0] Kb = 16'b0000000000000010,
+	parameter Uc = 16384,
+	//PARAMETROS P
+	parameter signed [ANCHO-1:0] mK = -16'd4096,
+	parameter signed [ANCHO-1:0] Kb = 16'd4096,
 	parameter signed [ANCHO-1:0] KbmK = 16'b0,
 
-	parameter signed [ANCHO-1:0] mKT_Ti = 16'b0000000000000001,
-	parameter signed [ANCHO-1:0] KT_Ti =  16'b0000000000000010,
+	//PARAMETROS I
+	parameter signed [ANCHO-1:0] mKT_Ti = 16'b1111110011001101,
+	parameter signed [ANCHO-1:0] KT_Ti =  16'b0000001100110011,
 
-	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'b0000100001000010,
-	parameter signed [ANCHO-1:0] mKTdN_TdmsNT =  16'b000001000011010,
+	//PARAMETROS D2
+	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'b0011010101010101,
+	parameter signed [ANCHO-1:0] mKTdN_TdmsNT =  16'b1011010101010101,
 
-	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'b0100000000000000
+	//PARAMETROS D1
+	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'b0000010101010101
 )(
-	input wire [ANCHO-1:0] Uc, //Señal set point
 
 	input wire clk, 
 	input wire reset,
@@ -25,6 +28,8 @@ module PID #(
 
 	output wire PWM_pulse
 );
+
+	
 	//Cable con la entrada de datos
 	wire [ANCHO-1:0] Y;
 
@@ -32,6 +37,7 @@ module PID #(
 
 	wire [ANCHO-1:0] Delay_I_Out;
 	wire [ANCHO-1:0] I;
+	wire [ANCHO-1:0] D;
 
 	//CONTROL ACC
 	wire clear_acc;
@@ -55,7 +61,7 @@ module PID #(
 
 	wire SO_Delay_Uc;
 	wire SO_Delay_Y;
-	wire SO_ACC_D2;
+	wire SO_D;
 
 	wire [ANCHO-1:0] Delay_Uc_out;
 	wire [ANCHO-1:0] Delay_Y_out;
@@ -70,6 +76,7 @@ module PID #(
 	wire [ANCHO-1:0] D2_out;
 	wire [ANCHO-1:0] D1_out;
 
+	wire [ANCHO-1:0] Delay_D_out;
 	
 	//MODULO DE CONTROL CENTRAL
 	UCC UCCi (
@@ -88,7 +95,7 @@ module PID #(
 
 	Sensor_receiver #(
 		.ANCHO(ANCHO)
-	) Adecuacion_feedback (
+	) Recepcion_feedback (
 		.clk(clk), 
 		.reset(reset),
 
@@ -192,7 +199,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_P (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -213,7 +220,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_I (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -227,7 +234,7 @@ module PID #(
 		.clk(clk),
 		.reset(reset),
 		.update(update_out),
-		.in_val(ACC_I_res),
+		.in_val(I),
 		.out_val(Delay_I_Out)
 	);
 	
@@ -246,7 +253,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_D2 (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -254,23 +261,33 @@ module PID #(
 		.resultado(ACC_D2_res)
 	);
 
+	Delay #(
+		.ANCHO(ANCHO)
+	) Delay_D1 (
+		.clk(clk),
+		.reset(reset),
+		.update(update_out),
+		.in_val(D),
+		.out_val(Delay_D_out)
+	);
+
 	PISO #(
 		.ANCHO(ANCHO)
-	) PISO_D2 (
+	) PISO_D1 (
 		.clk(clk),
 		.reset(reset),
 		
 		.load(load_PISO),
 		.shift_in(shift_SO),
 
-		.parallel_in(ACC_D2_res), //AÑADIR ENTRADA
-		.serial_out(SO_ACC_D2) //AÑADIR SALIDA
+		.parallel_in(Delay_D_out), //AÑADIR ENTRADA
+		.serial_out(SO_D) //AÑADIR SALIDA
  	);	
 
 	LUTD1 #(
 		.Td_TdmsNT(Td_TdmsNT)
 	) D1_value (
-		.lut_in(SO_ACC_D2),
+		.lut_in(SO_D),
 		.lut_out(D1_out)
 	);
 
@@ -278,7 +295,7 @@ module PID #(
 		.ANCHO(ANCHO)
 	) ACC_D1 (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.enable(enable_acc),
 		.sub(resta),
 		.update_val(update_out),
@@ -286,11 +303,13 @@ module PID #(
 		.resultado(ACC_D1_res)
 	);
 
+	assign D = ACC_D2_res + ACC_D1_res;
+
 	ACC_adder #(
     .ANCHO(ANCHO)
 	) ACC_adder (
 		.clk(clk),
-		.reset(reset),
+		.reset(clear_acc),
 		.update_out(update_out),     
 		
 		.ACC_P_res(ACC_P_res),
@@ -307,7 +326,7 @@ module PID #(
 	) PWM_gen (
 		.clk(clk),
 		.reset(reset),
-		.start_tick(resultado_ready),  
+		.start_pwm(resultado_ready),  
 		.full_speed(1'b1),
 		.RESULTADO_PID(RESULTADO_PID),
 		.PWM_out(PWM_pulse)
