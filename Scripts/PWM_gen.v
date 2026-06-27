@@ -15,7 +15,6 @@ module PWM_gen #(
     wire [14:0] duty_cycle_next;
     assign duty_cycle_next = (RESULTADO_PID[15] == 1'b1) ? 15'd0 : RESULTADO_PID[14:0];
 
-    // 2. Registro de Retención (Shadow Register) para evitar glitches
     reg [14:0] duty_cycle_latched;
 
     always @(posedge clk) begin
