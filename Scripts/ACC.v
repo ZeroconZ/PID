@@ -19,10 +19,9 @@ module ACC #(
     wire signed [31:0] val_adaptado;
     
     assign val_32 = val; 
-    
-    
     assign val_adaptado = val_32 <<< 15; 
     
+    wire [4:0] check_bits = val_interno[31:27];
     
     always @(posedge clk) begin
         if (reset) begin
@@ -40,7 +39,15 @@ module ACC #(
             end
             
             if (update_val) begin
-                resultado <= val_interno[27:12];
+                if (check_bits == 5'b00000 || check_bits == 5'b11111) begin
+                    resultado <= val_interno[27:12];
+                end 
+                else if (val_interno[31] == 1'b0) begin
+                    resultado <= 16'h7FFF; 
+                end 
+                else begin
+                    resultado <= 16'h8000; 
+                end
             end
         end
     end
