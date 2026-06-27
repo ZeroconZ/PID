@@ -1,5 +1,5 @@
 Flow report for PID
-Thu Jun 25 23:52:49 2026
+Sat Jun 27 19:49:46 2026
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Thu Jun 25 23:52:48 2026      ;
+; Flow Status                        ; Successful - Sat Jun 27 19:49:46 2026      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; PID                                        ;
 ; Top-level Entity Name              ; PID                                        ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/25/2026 23:52:48 ;
+; Start date & time ; 06/27/2026 19:49:45 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; PID                 ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+--------------------------+
 ; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id               ;
 +--------------------------------------+---------------------------------------+---------------+-------------+--------------------------+
-; COMPILER_SIGNATURE_ID                ; 7142766571854.178242436713968         ; --            ; --          ; --                       ;
+; COMPILER_SIGNATURE_ID                ; 7142766571854.178258258511208         ; --            ; --          ; --                       ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba Receptor de Datos ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_PID               ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba UCC               ;
@@ -83,7 +83,8 @@ applicable agreement for further details.
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_PWM               ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_Calculo_P         ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_Calculo_I         ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; Prueba_Calculo_I                      ; --            ; --          ; eda_simulation           ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; Prueba_Calculo_D         ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; Prueba_Calculo_D                      ; --            ; --          ; eda_simulation           ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation           ;
 ; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)             ; <None>        ; --          ; --                       ;
 ; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                       ; --            ; --          ; eda_simulation           ;
@@ -94,6 +95,7 @@ applicable agreement for further details.
 ; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/PWM_TB.v            ; --            ; --          ; Prueba_PWM               ;
 ; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/P_TB.v              ; --            ; --          ; Prueba_Calculo_P         ;
 ; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/I_TB.v              ; --            ; --          ; Prueba_Calculo_I         ;
+; EDA_TEST_BENCH_FILE                  ; Scripts_Testbench/D_TB.v              ; --            ; --          ; Prueba_Calculo_D         ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; tb_Sensor_receiver                    ; --            ; --          ; Prueba Receptor de Datos ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; system_TB                             ; --            ; --          ; Prueba_PID               ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; UCC_TB                                ; --            ; --          ; Prueba UCC               ;
@@ -101,6 +103,7 @@ applicable agreement for further details.
 ; EDA_TEST_BENCH_MODULE_NAME           ; PWM_TB                                ; --            ; --          ; Prueba_PWM               ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; P_TB                                  ; --            ; --          ; Prueba_Calculo_P         ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; I_TB                                  ; --            ; --          ; Prueba_Calculo_I         ;
+; EDA_TEST_BENCH_MODULE_NAME           ; D_TB                                  ; --            ; --          ; Prueba_Calculo_D         ;
 ; EDA_TEST_BENCH_NAME                  ; Prueba Receptor de Datos              ; --            ; --          ; eda_simulation           ;
 ; EDA_TEST_BENCH_NAME                  ; Prueba_PID                            ; --            ; --          ; eda_simulation           ;
 ; EDA_TEST_BENCH_NAME                  ; Prueba UCC                            ; --            ; --          ; eda_simulation           ;
@@ -108,6 +111,7 @@ applicable agreement for further details.
 ; EDA_TEST_BENCH_NAME                  ; Prueba_PWM                            ; --            ; --          ; eda_simulation           ;
 ; EDA_TEST_BENCH_NAME                  ; Prueba_Calculo_P                      ; --            ; --          ; eda_simulation           ;
 ; EDA_TEST_BENCH_NAME                  ; Prueba_Calculo_I                      ; --            ; --          ; eda_simulation           ;
+; EDA_TEST_BENCH_NAME                  ; Prueba_Calculo_D                      ; --            ; --          ; eda_simulation           ;
 ; EDA_TIME_SCALE                       ; 1 ps                                  ; --            ; --          ; eda_simulation           ;
 ; MAX_CORE_JUNCTION_TEMP               ; 100                                   ; --            ; --          ; --                       ;
 ; MIN_CORE_JUNCTION_TEMP               ; -40                                   ; --            ; --          ; --                       ;
@@ -126,7 +130,7 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 4669 MB             ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 4683 MB             ; 00:00:01                           ;
 ; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
