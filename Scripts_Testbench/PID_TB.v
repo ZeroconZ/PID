@@ -11,7 +11,23 @@ module system_TB;
     reg ini_fin;
     reg bit_entrada;
     
-    parameter signed [ANCHO-1:0] Uc = 16'd16384; 
+    parameter signed [ANCHO-1:0] Uc = 16'sd1000; 
+
+    //PARAMETROS P
+	parameter signed [ANCHO-1:0] mK = -16'd4096; 
+    parameter signed [ANCHO-1:0] Kb = 16'd4096; 
+    parameter signed [ANCHO-1:0] KbmK = 16'b0;
+
+	//PARAMETROS I
+	parameter signed [ANCHO-1:0] mKT_Ti = -16'sd410;
+	parameter signed [ANCHO-1:0] KT_Ti =  16'sd410;
+
+	//PARAMETROS D2
+	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'sd3413;
+	parameter signed [ANCHO-1:0] mKTdN_TdmsNT =  -16'sd3413;
+
+	//PARAMETROS D1
+	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'sd3413;
 
     wire PWM_pulse;
 
@@ -22,7 +38,19 @@ module system_TB;
     // INSTANCIACIÓN DEL DUT
     PID #(
         .ANCHO(ANCHO),
-        .Uc(Uc)
+        .Uc(Uc),
+
+        .mK(mK),
+        .Kb(Kb),
+        .KbmK(KbmK),
+
+        .mKT_Ti(mKT_Ti),
+        .KT_Ti(KT_Ti),
+
+        .KTdN_TdmsNT(KTdN_TdmsNT),
+        .mKTdN_TdmsNT(mKTdN_TdmsNT),
+
+        .Td_TdmsNT(Td_TdmsNT)
     ) uut (    
         .clk(clk),
         .reset(reset),
@@ -75,13 +103,23 @@ module system_TB;
         #100;
 
         $display("=================================================================");
-        $display("PRUEBA");
+        $display("INICIO DE VERIFICACION DEL PID (TOP MODULE)");
         $display("=================================================================\n");
 
-        Feedback = 16'd384; 
-
         for (j = 1; j <= 6; j = j + 1) begin
-            $display("--- ENVIANDO MUESTRA %0d ---", j);
+            // Introducimos un cambio dinámico (escalón) en el ciclo 4
+            if (j == 1) begin
+                Feedback = 16'd500; 
+            end
+            else if (j == 2) begin
+                Feedback = 16'd700; 
+            end
+            else begin
+                Feedback = 16'd100; 
+            end
+
+            
+            $display("--- ENVIANDO MUESTRA %0d (Feedback = %0d) ---", j, Feedback);
             
             fork
                 begin
@@ -92,23 +130,32 @@ module system_TB;
                 end
             join
 
-            if(Feedback == uut.Y) $display("[%0t] [MONITOR] Rx OK: Y = %d", $time, uut.Y);
-            else $display("[%0t] [MONITOR] Hubo un problema papu en el envio", $time);
+            if(Feedback == uut.Y) 
+                $display("[%0t] [MONITOR SPI] Rx OK: Uc = %d Y = %d", $time, uut.Uc, uut.Y);
+            else 
+                $display("[%0t] [MONITOR SPI] ERROR: Corrupcion de datos en Rx", $time);
  
+            // Esperar a que la UCC termine de calcular el algoritmo DA
             @(posedge uut.resultado_ready);
             @(posedge clk); 
 
-            // MONITOR DE VARIABLES
+            // MONITOR DE VARIABLES COMPLETO
             $display("Tiempo %0t:", $time);
-            $display("   -> Accion P (Instantanea) = %d", uut.ACC_P_res);
-            $display("   -> Incremento I del ciclo = %d", uut.ACC_I_res);
-            $display("   -> INTEGRAL TOTAL (I)     = %d", uut.I);
-            $display("   -> INTEGRAL RETARDADA (I k-1)     = %d", uut.Delay_I_Out);
-            $display("   -> RESULTADO PID          = %d\n", uut.RESULTADO_PID);
+            $display("   -> Accion P (Instantanea)       = %d", uut.ACC_P_res);
+            $display("   -> Accion I (Integral Acumulada)= %d", uut.I);
+            $display("   -> Accion D (Derivada Total)    = %d", uut.D); // AÑADIDO
+            $display("---------------------------------------------------");
 
+            $display("   -> RESULTADO PID (Suma Total)   = %d\n", uut.RESULTADO_PID);
+
+            // Retardo entre muestras (simula la frecuencia de muestreo del sensor real)
             #5000; 
         end
 
+        $display("[%0t] Procesamiento algoritmico finalizado.", $time);
+        $display("Generando pulsos PWM continuos. Observe el Waveform...");
+        
+        // Tiempo extra para observar los ciclos del PWM generados con el último RESULTADO_PID
         #1000000; 
         
         $display("[%0t] Fin de la simulacion.", $time);
