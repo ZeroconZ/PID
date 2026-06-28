@@ -2,21 +2,20 @@ module PID #(
 	parameter ANCHO = 16,
 	parameter PERIODO = 32768,
 	parameter Uc = 16384,
-	//PARAMETROS P
-	parameter signed [ANCHO-1:0] mK = -16'd4096,
-	parameter signed [ANCHO-1:0] Kb = 16'd4096,
-	parameter signed [ANCHO-1:0] KbmK = 16'b0,
-
+ 	//PARAMETROS P
+	parameter signed [ANCHO-1:0] mK = -16'd4096; 
+    parameter signed [ANCHO-1:0] Kb = 16'd4096; 
+    parameter signed [ANCHO-1:0] KbmK = 16'b0;
 	//PARAMETROS I
-	parameter signed [ANCHO-1:0] mKT_Ti = 16'b1111110011001101,
-	parameter signed [ANCHO-1:0] KT_Ti =  16'b0000001100110011,
+	parameter signed [ANCHO-1:0] mKT_Ti = -16'sd410,
+	parameter signed [ANCHO-1:0] KT_Ti =  16'sd410,
 
 	//PARAMETROS D2
-	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'b0011010101010101,
-	parameter signed [ANCHO-1:0] mKTdN_TdmsNT =  16'b1011010101010101,
+	parameter signed [ANCHO-1:0] KTdN_TdmsNT =  16'sd3413,
+	parameter signed [ANCHO-1:0] mKTdN_TdmsNT =  -16'sd3413,
 
 	//PARAMETROS D1
-	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'b0000010101010101
+	parameter signed [ANCHO-1:0] Td_TdmsNT = 16'sd3413
 )(
 
 	input wire clk, 
@@ -78,8 +77,10 @@ module PID #(
 
 	wire [ANCHO-1:0] Delay_D_out;
 
-	wire update_delays;
-	
+	wire resultado_ready;
+
+	reg update_delays;
+
 	//MODULO DE CONTROL CENTRAL
 	UCC UCCi (
 		.clk(clk),
@@ -290,8 +291,8 @@ module PID #(
 		.load(load_PISO),
 		.shift_in(shift_SO),
 
-		.parallel_in(Delay_D_out), //AÑADIR ENTRADA
-		.serial_out(SO_D) //AÑADIR SALIDA
+		.parallel_in(Delay_D_out), //AÃ‘ADIR ENTRADA
+		.serial_out(SO_D) //AÃ‘ADIR SALIDA
  	);	
 
 	LUTD1 #(
@@ -320,7 +321,7 @@ module PID #(
 	) Final_adder (
 		.clk(clk),
 		.reset(reset),
-		.update_out(update_out),     
+		.update(update_delays),     
 		
 		.P_in(ACC_P_res),
 		.I_in(I),
@@ -336,7 +337,7 @@ module PID #(
 		.clk(clk),
 		.reset(reset),
 
-		.start_pwm(resultado_ready),  
+		.data_ready(resultado_ready),  
 		.full_speed(1'b1),
 
 		.RESULTADO_PID(RESULTADO_PID),
