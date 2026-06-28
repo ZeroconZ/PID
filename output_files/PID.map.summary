@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Sat Jun 27 19:49:46 2026
+Analysis & Synthesis Status : Successful - Sun Jun 28 00:34:24 2026
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : PID
 Top-level Entity Name : PID
 Family : Cyclone III
-Total logic elements : 580
-    Total combinational functions : 552
-    Dedicated logic registers : 389
-Total registers : 389
+Total logic elements : 608
+    Total combinational functions : 604
+    Dedicated logic registers : 413
+Total registers : 413
 Total pins : 6
 Total virtual pins : 0
 Total memory bits : 0
