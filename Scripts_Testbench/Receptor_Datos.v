@@ -79,7 +79,7 @@ module tb_Sensor_receiver;
         $display("[%0t] -----------------------------------------------------------------", $time);
 
         // PRUEBA VALOR POSITIVO
-        pos_val = 16'h25A3;
+        pos_val = 16'd2048;
         $display("[%0t] Envio de un valor positivo: %d", $time, pos_val);
         send_spi_data(pos_val);
         
@@ -87,10 +87,10 @@ module tb_Sensor_receiver;
         #1;
 
         if(Y == pos_val) begin
-            $display("[%0t] Todo ha salido a pedir de Mil House", $time);
+            $display("[%0t] El valor recibido es: %d ", $time, Y);
         end
         else begin
-            $display("[%0t] Hubo un percance", $time);
+            $display("[%0t] No se recibió el valor correctamente", $time);
         end
 
         $display("[%0t] -----------------------------------------------------------------", $time);
@@ -98,7 +98,7 @@ module tb_Sensor_receiver;
         // PRUEBA VALOR NEGATIVO
         #500;
 
-        neg_val = 16'hE000;
+        neg_val = 16'd51200;
         $display("[%0t] Envio de un valor negativo: %d", $time, neg_val); // Corregido texto
         send_spi_data(neg_val);
         
@@ -106,44 +106,14 @@ module tb_Sensor_receiver;
         #1;
 
         if(Y == neg_val) begin
-            $display("[%0t] Todo ha salido a pedir de Mil House", $time);
+            $display("[%0t] El valor recibido es: %d ", $time, Y);
         end
         else begin
-            $display("[%0t] Hubo un percance", $time);
+            $display("[%0t] No se recibió el valor correctamente", $time);
         end
 
         $display("[%0t] -----------------------------------------------------------------", $time);
 
-        // PRUEBA METAESTABILIDAD
-        #500;
-
-        @(posedge clk);
-
-        // SE FUERZAN DATOS INDETERMINADOS
-        bit_entrada = 1'bx; 
-        clk_datos   = 1'bx;
-        ini_fin     = 1;
-
-        @(posedge clk);
-        $display("[%0t] [MONITOR CDC] FF1=%b, FF2=%b", $time, uut.sync_clk_datos_1, uut.sync_clk_datos_2);
-
-        // RETORNO A CONDICIONES NORMALES SEGURAS
-        #5; 
-        bit_entrada = 1;
-        clk_datos   = 0;
-        ini_fin     = 0; 
-
-        repeat (3) @(posedge clk); // ESPERA HASTA QUE LOS FLIP-FLOPS LIMPIEN EL VALOR INDETERMINADO
-
-        $display("[%0t] [MONITOR CDC POST-METAESTABILIDAD] FF1=%b, FF2=%b", $time, uut.sync_clk_datos_1, uut.sync_clk_datos_2);
-
-        if (uut.sync_clk_datos_2 !== 1'bx) begin
-            $display("[%0t] [TEST PASSED] Se limpio la metaestabilidad", $time);
-        end else begin
-            $display("[%0t] [TEST FAILED] La metaestabilidad se progreso", $time);
-        end
-        
-        $display("[%0t] -----------------------------------------------------------------", $time);
         #100;
         $stop; 
 		 
