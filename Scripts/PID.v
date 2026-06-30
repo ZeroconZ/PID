@@ -3,9 +3,9 @@ module PID #(
 	parameter PERIODO = 32768,
 	parameter Uc = 16384,
  	//PARAMETROS P
-	parameter signed [ANCHO-1:0] mK = -16'd4096; 
-    parameter signed [ANCHO-1:0] Kb = 16'd4096; 
-    parameter signed [ANCHO-1:0] KbmK = 16'b0;
+	parameter signed [ANCHO-1:0] mK = -16'd4096,
+  parameter signed [ANCHO-1:0] Kb = 16'd4096, 
+  parameter signed [ANCHO-1:0] KbmK = 16'b0,
 	//PARAMETROS I
 	parameter signed [ANCHO-1:0] mKT_Ti = -16'sd410,
 	parameter signed [ANCHO-1:0] KT_Ti =  16'sd410,

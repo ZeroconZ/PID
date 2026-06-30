@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PID
-Sun Jun 28 00:34:24 2026
+Sun Jun 28 17:20:12 2026
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -70,15 +70,15 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jun 28 00:34:24 2026      ;
+; Analysis & Synthesis Status        ; Successful - Sun Jun 28 17:20:12 2026      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; PID                                        ;
 ; Top-level Entity Name              ; PID                                        ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 608                                        ;
-;     Total combinational functions  ; 604                                        ;
-;     Dedicated logic registers      ; 413                                        ;
-; Total registers                    ; 413                                        ;
+; Total logic elements               ; 591                                        ;
+;     Total combinational functions  ; 587                                        ;
+;     Dedicated logic registers      ; 402                                        ;
+; Total registers                    ; 402                                        ;
 ; Total pins                         ; 6                                          ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
@@ -217,28 +217,28 @@ applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 608       ;
+; Estimated Total logic elements              ; 591       ;
 ;                                             ;           ;
-; Total combinational functions               ; 604       ;
+; Total combinational functions               ; 587       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 56        ;
-;     -- 3 input functions                    ; 382       ;
-;     -- <=2 input functions                  ; 166       ;
+;     -- 4 input functions                    ; 59        ;
+;     -- 3 input functions                    ; 358       ;
+;     -- <=2 input functions                  ; 170       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 384       ;
-;     -- arithmetic mode                      ; 220       ;
+;     -- normal mode                          ; 391       ;
+;     -- arithmetic mode                      ; 196       ;
 ;                                             ;           ;
-; Total registers                             ; 413       ;
-;     -- Dedicated logic registers            ; 413       ;
+; Total registers                             ; 402       ;
+;     -- Dedicated logic registers            ; 402       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 6         ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 413       ;
-; Total fan-out                               ; 3110      ;
-; Average fan-out                             ; 3.02      ;
+; Maximum fan-out                             ; 402       ;
+; Total fan-out                               ; 3013      ;
+; Average fan-out                             ; 3.01      ;
 +---------------------------------------------+-----------+
 
 
@@ -247,19 +247,20 @@ applicable agreement for further details.
 +-----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
 ; Compilation Hierarchy Node              ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Library Name ;
 +-----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
-; |PID                                    ; 604 (33)          ; 413 (1)      ; 0           ; 0            ; 0       ; 0         ; 6    ; 0            ; |PID                                    ; work         ;
-;    |ACC:ACC_D1|                         ; 66 (66)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|ACC:ACC_D1                         ; work         ;
+; |PID                                    ; 587 (33)          ; 402 (1)      ; 0           ; 0            ; 0       ; 0         ; 6    ; 0            ; |PID                                    ; work         ;
+;    |ACC:ACC_D1|                         ; 65 (65)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|ACC:ACC_D1                         ; work         ;
 ;    |ACC:ACC_D2|                         ; 67 (67)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|ACC:ACC_D2                         ; work         ;
 ;    |ACC:ACC_I|                          ; 68 (68)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|ACC:ACC_I                          ; work         ;
-;    |ACC:ACC_P|                          ; 66 (66)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|ACC:ACC_P                          ; work         ;
+;    |ACC:ACC_P|                          ; 48 (48)           ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|ACC:ACC_P                          ; work         ;
 ;    |Delay:Delay_D1|                     ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|Delay:Delay_D1                     ; work         ;
 ;    |Delay:Delay_I|                      ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|Delay:Delay_I                      ; work         ;
 ;    |Delay:Delay_Uc|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|Delay:Delay_Uc                     ; work         ;
 ;    |Delay:Delay_Y|                      ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|Delay:Delay_Y                      ; work         ;
 ;    |Final_adder:Final_adder|            ; 60 (60)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|Final_adder:Final_adder            ; work         ;
+;    |LUTP:P_value|                       ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|LUTP:P_value                       ; work         ;
 ;    |PISO:PISO_D1|                       ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PISO:PISO_D1                       ; work         ;
-;    |PISO:PISO_Delay_Uc|                 ; 15 (15)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PISO:PISO_Delay_Uc                 ; work         ;
-;    |PISO:PISO_Delay_Y|                  ; 17 (17)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PISO:PISO_Delay_Y                  ; work         ;
+;    |PISO:PISO_Delay_Uc|                 ; 16 (16)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PISO:PISO_Delay_Uc                 ; work         ;
+;    |PISO:PISO_Delay_Y|                  ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PISO:PISO_Delay_Y                  ; work         ;
 ;    |PISO:PISO_Uc|                       ; 15 (15)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PISO:PISO_Uc                       ; work         ;
 ;    |PISO:PISO_Y|                        ; 16 (16)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PISO:PISO_Y                        ; work         ;
 ;    |PWM_gen:PWM_gen|                    ; 56 (56)           ; 31 (31)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PID|PWM_gen:PWM_gen                    ; work         ;
@@ -294,18 +295,23 @@ Encoding Type:  One-Hot
 ; PISO:PISO_Delay_Uc|shift_reg[15]       ; Stuck at GND due to stuck port data_in ;
 ; UCC:UCCi|estado_actual~3               ; Lost fanout                            ;
 ; UCC:UCCi|estado_actual~4               ; Lost fanout                            ;
-; Total Number of Removed Registers = 26 ;                                        ;
+; ACC:ACC_P|val_interno[1..11]           ; Lost fanout                            ;
+; Total Number of Removed Registers = 37 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                    ;
-+---------------------------+---------------------------+----------------------------------------+
-; Register name             ; Reason for Removal        ; Registers Removed due to This Register ;
-+---------------------------+---------------------------+----------------------------------------+
-; Delay:Delay_Uc|out_val[0] ; Stuck at GND              ; PISO:PISO_Delay_Uc|shift_reg[15]       ;
-;                           ; due to stuck port data_in ;                                        ;
-+---------------------------+---------------------------+----------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                            ;
++---------------------------+---------------------------+--------------------------------------------------------------------------------+
+; Register name             ; Reason for Removal        ; Registers Removed due to This Register                                         ;
++---------------------------+---------------------------+--------------------------------------------------------------------------------+
+; ACC:ACC_P|val_interno[1]  ; Lost Fanouts              ; ACC:ACC_P|val_interno[2], ACC:ACC_P|val_interno[3], ACC:ACC_P|val_interno[4],  ;
+;                           ;                           ; ACC:ACC_P|val_interno[5], ACC:ACC_P|val_interno[6], ACC:ACC_P|val_interno[7],  ;
+;                           ;                           ; ACC:ACC_P|val_interno[8], ACC:ACC_P|val_interno[9], ACC:ACC_P|val_interno[10], ;
+;                           ;                           ; ACC:ACC_P|val_interno[11]                                                      ;
+; Delay:Delay_Uc|out_val[0] ; Stuck at GND              ; PISO:PISO_Delay_Uc|shift_reg[15]                                               ;
+;                           ; due to stuck port data_in ;                                                                                ;
++---------------------------+---------------------------+--------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -313,12 +319,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 413   ;
-; Number of registers using Synchronous Clear  ; 198   ;
+; Total registers                              ; 402   ;
+; Number of registers using Synchronous Clear  ; 186   ;
 ; Number of registers using Synchronous Load   ; 1     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 377   ;
+; Number of registers using Clock Enable       ; 366   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -328,20 +334,21 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
-; 3:1                ; 124 bits  ; 248 LEs       ; 124 LEs              ; 124 LEs                ; Yes        ; |PID|ACC:ACC_D1|val_interno[20]                   ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PID|Sensor_receiver:Recepcion_feedback|Y[8]      ;
-; 3:1                ; 48 bits   ; 96 LEs        ; 48 LEs               ; 48 LEs                 ; Yes        ; |PID|Delay:Delay_I|out_val[1]                     ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PID|PWM_gen:PWM_gen|pwm_count[3]                 ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PID|PISO:PISO_Delay_Y|shift_reg[15]              ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |PID|PISO:PISO_Delay_Uc|shift_reg[3]              ;
-; 4:1                ; 45 bits   ; 90 LEs        ; 90 LEs               ; 0 LEs                  ; Yes        ; |PID|PISO:PISO_Delay_Y|shift_reg[1]               ;
-; 4:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PID|PWM_gen:PWM_gen|duty_cycle_latched[14]       ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_P|resultado[9]                       ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_I|resultado[14]                      ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_D1|resultado[2]                      ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_D2|resultado[3]                      ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PID|Sensor_receiver:Recepcion_feedback|Y_temp[8] ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |PID|Final_adder:Final_adder|U_out[1]             ;
+; 3:1                ; 108 bits  ; 216 LEs       ; 108 LEs              ; 108 LEs                ; Yes        ; |PID|ACC:ACC_D1|val_interno[3]                    ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PID|Sensor_receiver:Recepcion_feedback|Y[11]     ;
+; 3:1                ; 48 bits   ; 96 LEs        ; 48 LEs               ; 48 LEs                 ; Yes        ; |PID|Delay:Delay_D1|out_val[10]                   ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PID|PWM_gen:PWM_gen|pwm_count[5]                 ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PID|PISO:PISO_Delay_Uc|shift_reg[14]             ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |PID|PISO:PISO_Delay_Uc|shift_reg[2]              ;
+; 4:1                ; 45 bits   ; 90 LEs        ; 90 LEs               ; 0 LEs                  ; Yes        ; |PID|PISO:PISO_Delay_Y|shift_reg[7]               ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PID|PWM_gen:PWM_gen|duty_cycle_latched[10]       ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_P|resultado[0]                       ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_I|resultado[0]                       ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_D1|resultado[7]                      ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_D2|resultado[0]                      ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PID|Sensor_receiver:Recepcion_feedback|Y_temp[0] ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |PID|Final_adder:Final_adder|U_out[13]            ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |PID|ACC:ACC_P|val_interno[22]                    ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |PID|UCC:UCCi|estado_actual                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
 
@@ -354,8 +361,8 @@ Encoding Type:  One-Hot
 ; ANCHO          ; 16               ; Signed Integer                  ;
 ; PERIODO        ; 32768            ; Signed Integer                  ;
 ; Uc             ; 16384            ; Signed Integer                  ;
-; mK             ; 1111111111111111 ; Signed Binary                   ;
-; Kb             ; 0000000000000001 ; Signed Binary                   ;
+; mK             ; 1111000000000000 ; Signed Binary                   ;
+; Kb             ; 0001000000000000 ; Signed Binary                   ;
 ; KbmK           ; 0000000000000000 ; Signed Binary                   ;
 ; mKT_Ti         ; 1111111001100110 ; Signed Binary                   ;
 ; KT_Ti          ; 0000000110011010 ; Signed Binary                   ;
@@ -451,8 +458,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+------------------+-----------------------+
 ; Parameter Name ; Value            ; Type                  ;
 +----------------+------------------+-----------------------+
-; mK             ; 1111111111111111 ; Signed Binary         ;
-; Kb             ; 0000000000000001 ; Signed Binary         ;
+; mK             ; 1111000000000000 ; Signed Binary         ;
+; Kb             ; 0001000000000000 ; Signed Binary         ;
 ; KbmK           ; 0000000000000000 ; Signed Binary         ;
 +----------------+------------------+-----------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -631,7 +638,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Sun Jun 28 00:34:23 2026
+    Info: Processing started: Sun Jun 28 17:20:10 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PID -c PID
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file scripts/final_adder.v
@@ -677,17 +684,17 @@ Info (12128): Elaborating entity "Final_adder" for hierarchy "Final_adder:Final_
 Info (12128): Elaborating entity "PWM_gen" for hierarchy "PWM_gen:PWM_gen"
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 9 registers lost all their fanouts during netlist optimizations.
+Info (17049): 20 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 614 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 597 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 608 logic cells
+    Info (21061): Implemented 591 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4684 megabytes
-    Info: Processing ended: Sun Jun 28 00:34:24 2026
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 4683 megabytes
+    Info: Processing ended: Sun Jun 28 17:20:12 2026
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 
