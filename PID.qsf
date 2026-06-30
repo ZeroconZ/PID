@@ -56,7 +56,7 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH Prueba_PISO -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH Prueba_sumador_final -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME "Prueba Receptor de Datos" -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id "Prueba Receptor de Datos"
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_Sensor_receiver -section_id "Prueba Receptor de Datos"
@@ -97,6 +97,12 @@ set_global_assignment -name VERILOG_FILE Scripts/Delay.v
 set_global_assignment -name VERILOG_FILE Scripts/ACC_adder.v
 set_global_assignment -name VERILOG_FILE Scripts/ACC.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name EDA_TEST_BENCH_NAME Prueba_PISO -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Prueba_PISO
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME PISO_TB -section_id Prueba_PISO
+set_global_assignment -name EDA_TEST_BENCH_NAME Prueba_Delay -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Prueba_Delay
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Delay_TB -section_id Prueba_Delay
 set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/Receptor_Datos.v -section_id "Prueba Receptor de Datos"
 set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/PID_TB.v -section_id Prueba_PID
 set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/UCC_TB.v -section_id "Prueba UCC"
@@ -105,7 +111,9 @@ set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/PWM_TB.v -sect
 set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/P_TB.v -section_id Prueba_Calculo_P
 set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/I_TB.v -section_id Prueba_Calculo_I
 set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/D_TB.v -section_id Prueba_Calculo_D
-set_global_assignment -name EDA_TEST_BENCH_NAME Prueba_PISO -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Prueba_PISO
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME PISO_TB -section_id Prueba_PISO
 set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/PISO_TB.v -section_id Prueba_PISO
+set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/Delay_TB.v -section_id Prueba_Delay
+set_global_assignment -name EDA_TEST_BENCH_NAME Prueba_sumador_final -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Prueba_sumador_final
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Sumador_TB -section_id Prueba_sumador_final
+set_global_assignment -name EDA_TEST_BENCH_FILE Scripts_Testbench/Sumador_TB.v -section_id Prueba_sumador_final

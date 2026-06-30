@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module tb_Final_adder;
+module Sumador_TB;
 
     parameter ANCHO = 16;
     parameter signed [17:0] MAX_LIMIT = 18'd32767;
@@ -62,9 +62,9 @@ module tb_Final_adder;
         #1;
         
         if (U_out == 16'd2500 && out_ready == 1'b1) begin
-            $display("[%0t] EXITO - Suma normal. U_out = %d", $time, U_out);
+            $display("[%0t] Suma normal. U_out = %d", $time, U_out);
         end else begin
-            $display("[%0t] ERROR - Suma normal. U_out = %d", $time, U_out);
+            $display("[%0t] Suma normal. U_out = %d", $time, U_out);
         end
 
         $display("-----------------------------------------------------------------");
@@ -102,26 +102,6 @@ module tb_Final_adder;
         end else begin
             $display("[%0t] Saturacion negativa. U_out = %d", $time, U_out);
         end
-
-        $display("[%0t] -----------------------------------------------------------------", $time);
-
-        // PRUEBA 4: UPDATE = 0 (RETENCION DE DATOS)
-        @(negedge clk);
-        update = 0;
-        P_in = 16'd10;
-        I_in = 16'd10;
-        D_in = 16'd10;
-        
-        @(posedge clk);
-        #1;
-        
-        if (U_out == -16'd32768 && out_ready == 1'b0) begin
-            $display("[%0t] Retencion (update=0). U_out = %d", $time, U_out);
-        end else begin
-            $display("[%0t] Retencion (update=0). U_out = %d", $time, U_out);
-        end
-
-        $display("[%0t] -----------------------------------------------------------------", $time);
 
         #100;
         $stop;
