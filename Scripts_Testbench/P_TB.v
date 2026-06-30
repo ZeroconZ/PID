@@ -169,20 +169,11 @@ module P_TB;
         if(Feedback == Y) $display("[%0t] [MONITOR] Rx OK: Y = %d", $time, Y);
         else $display("[%0t] [MONITOR] Hubo un problema papu en Rx", $time);
 
-        @(posedge clear_acc)
-        $display("\n--- INICIANDO BUCLE DA DE 16 CICLOS ---");
-        // Bucle para espiar el procesamiento bit a bit
-        for (j = 0; j < 16; j = j + 1) begin
-            @(posedge clk); 
-            #1; // Leer justo después del flanco para ver valores estables
-            $display("Ciclo %0d | bits {Uc,Y}: %b%b | Sale LUT: %d | val_interno: %d", 
-                      j, SO_Uc, SO_Y, P_out, ACC_P.val_interno);
-        end
-        $display("---------------------------------------\n");
+        $display("-----------------------------------------------------------------");
 
         @(posedge update_out);
-        @(posedge clk); // Espera al reloj que hace "resultado <= val_interno"
-        #1;             // Margen de seguridad para lectura
+        @(posedge clk); 
+        #1;             
         $display("[%0t] [MONITOR FINAL] Calculo completado -> ACC_P=%d Interno = %d", $time, ACC_P_res, ACC_P.val_interno);
 
         #100;
